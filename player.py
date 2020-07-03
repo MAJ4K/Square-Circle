@@ -27,3 +27,7 @@ class Player():
             self.dx = self.vel
 
         self.rect = (self.x,self.y,self.size,self.size)
+    
+    """ def shoot(self,window):
+        if pygame.key.get_pressed()[pygame.K_SPACE]:
+            pygame.draw.elipse(window,(255,255,255),(self.x,self.y),self.size) """

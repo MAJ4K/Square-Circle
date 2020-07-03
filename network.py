@@ -5,7 +5,7 @@ from data import Data
 class Network:
     def __init__(self):
         self.client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-        self.server = "192.168.1.244"
+        self.server = "192.168.1.253"
         self.port = 5555
         self.addy = (self.server, self.port)
         self.id = self.connect()
