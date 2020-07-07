@@ -74,7 +74,9 @@ def thread_start(conn,id):
                 try:
                     cData[id].x += data.x
                     cData[id].y += data.y
-                    nearP.append(Data(cData[id].x, cData[id].y, cData[id].color))
+                    cData[id].shooting = data.shooting
+                    dat = cData[id]
+                    nearP.append(dat)
                     game_update(cData[id])
                     for X in cData:
                         if X:
@@ -87,8 +89,8 @@ def thread_start(conn,id):
         except:
             break
     print("Disconnected")
-    cList[id] = False
-    cData[id] = None
+    cList.remove(cList[id])
+    cData.remove(cData[id])
     conn.close()
 
 def assignId():

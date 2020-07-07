@@ -5,6 +5,8 @@ from data import Data
 
 N = Network()
 
+WHITE = (255,255,255)
+
 wwidth = 800
 wheight = 600
 window = pygame.display.set_mode((wwidth,wheight))
@@ -12,13 +14,16 @@ pygame.display.set_caption("Player")
 
 clientNumber = N.id            
 
-def redrawWindow(win,plist):
+def redrawWindow(win,plist,me):
     win.fill((0,0,0))
+    me.draw(win)
+    me.shoot(win)
     for X in plist:
-        dx = ((plist[0].x - X.x) * -2.5) + wwidth/2
-        dy = ((plist[0].y - X.y) * -2.5) + wheight/2
-        pl = Player(dx,dy,25,X.color)
-        pl.draw(win)
+        if X.color != plist[0].color:
+            dx = ((plist[0].x - X.x) * -2.4) + wwidth/2
+            dy = ((plist[0].y - X.y) * -2.4) + wheight/2
+            pl = Player(dx,dy,24,X.color)
+            pl.draw(win)
     pygame.display.update()
     
 
@@ -35,7 +40,9 @@ def main():
         p.move()
         D.x = p.dx 
         D.y = p.dy
-        redrawWindow(window,N.send(D))
+        D.shooing = pygame.key.get_pressed()[pygame.K_SPACE]
+        redrawWindow(window,N.send(D),p)
+        
         
         
         

@@ -4,7 +4,5 @@ class Data:
         self.x = x
         self.y = y
         self.color = color
-        self.shot = 0
-        self.shotnum = 0
-        self.shots = []
+        self.shooting = False
 
